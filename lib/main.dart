@@ -31,11 +31,8 @@ import 'helper/singletons/login_manager.dart';
 import 'helper/verify_email_outcome.dart';
 import 'navigation_bar.dart';
 
-ChatLogic chatLogic = ChatLogic.instance;
-
 @pragma('vm:entry-point')
 void backgroundCheckChatConnection() async {
-  print("ISOLATE 2-1: ${chatLogic.hashCode}");
   Workmanager().executeTask((task, inputData) async {
     Future.delayed(Duration(seconds: 10));
     return true;
@@ -43,21 +40,20 @@ void backgroundCheckChatConnection() async {
 }
 
 void checkChatConnection(bool isTokenPresent) async {
+  ChatLogic chatLogic = ChatLogic.instance;
   HubConnectionState? connectionState = chatLogic.hubConnection.state;
-  if (connectionState != null) {
-    if (isTokenPresent && connectionState == "HubConnectionState.Connected") {
-      print("Chat still connected");
-    } else if (!isTokenPresent &&
-        connectionState == HubConnectionState.Connected) {
-      await chatLogic.hubConnection.stop();
-    } else if (!isTokenPresent &&
-        connectionState == HubConnectionState.Disconnected) {
-      print("Chat not connected");
-    } else if (isTokenPresent &&
-        (connectionState == HubConnectionState.Disconnected)) {
-      print("disconnected");
-      await chatLogic.start();
-    }
+  if (isTokenPresent && connectionState == "HubConnectionState.Connected") {
+    print("Chat still connected");
+  } else if (!isTokenPresent &&
+      connectionState == HubConnectionState.Connected) {
+    await chatLogic.hubConnection.stop();
+  } else if (!isTokenPresent &&
+      connectionState == HubConnectionState.Disconnected) {
+    print("Chat not connected");
+  } else if (isTokenPresent &&
+      (connectionState == HubConnectionState.Disconnected)) {
+    print("disconnected");
+    await chatLogic.start();
   }
 }
 
@@ -65,8 +61,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   NotificationManager.requestPermission();
   await NotificationManager.init();
-  print("MAIN CHATLOGIC: ${chatLogic.hashCode}");
-  Workmanager().initialize(backgroundCheckChatConnection, isInDebugMode: true);
+  ChatLogic chatLogic = ChatLogic.instance;
+  Workmanager().initialize(backgroundCheckChatConnection);
   // Periodic task registration
   await Workmanager()
       .registerPeriodicTask("periodic-task-identifier", "simplePeriodicTask",
