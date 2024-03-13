@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "746085633002",
+    "project_id": "fuocherello-a4c5c",
+    "storage_bucket": "fuocherello-a4c5c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:746085633002:android:287511f9390084e7d20093",
+        "android_client_info": {
+          "package_name": "com.diodorogroup.fuocherello"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "746085633002-60afen9ugaocc08v5mfam41g6jt2epov.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.diodorogroup.fuocherello",
+            "certificate_hash": "94d8127aed7946b340cd15426d916ea8ab414860"
+          }
+        },
+        {
+          "client_id": "746085633002-r4lsvaljlfdri7uvnio7l6l0g1ch51q2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkU7iX8hTvhOfzIRVooBsLh8w3HrC9SnU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "746085633002-7ecok2ei33jqmhgg73ir1q2rnmfcfic8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "746085633002-8ekj8guism6i2p2uokv8epp35mo1rv0g.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.diodorogroup.fuocherello"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
